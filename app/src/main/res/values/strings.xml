@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Sharwan\'s Android Labs</string>
+    <string name="app_name">Sharwan\s Android Labs</string>
+    <string name="hello_message">hello world</string>
 </resources>
