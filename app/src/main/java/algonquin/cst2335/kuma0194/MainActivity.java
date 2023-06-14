@@ -75,9 +75,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int width = imageButton.getWidth();
                 int height = imageButton.getHeight();
-                Toast.makeText(MainActivity.this, "ImageButton width: " + width + ", height: " + height, Toast.LENGTH_SHORT).show();
+
+                String message = "The width = " + width + " and height = " + height;
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
 }
