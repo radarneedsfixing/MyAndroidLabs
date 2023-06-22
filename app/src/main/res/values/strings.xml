@@ -3,5 +3,10 @@
     <string name="hello_message">hello world</string>
     <string name="button_name">Button</string>
 
+    <string name="button1_text" translatable="false">Button 1</string>
+    <string name="button2_text" translatable="false">Button 2</string>
+    <string name="button3_text" translatable="false">Button 3</string>
+    <string name="spin_message">spin_flag</string>
+
 
 </resources>

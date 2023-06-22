@@ -3,5 +3,6 @@
     <string name="app_name">Sharwan\\s ke android labs</string>
     <string name="hello_message">Namaste</string>
     <string name="button_name">ye button hai</string>
+    <string name="spin_message">flag ko ghmaaye</string>
 
 </resources>
