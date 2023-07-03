@@ -7,6 +7,10 @@
     <string name="button2_text" translatable="false">Button 2</string>
     <string name="button3_text" translatable="false">Button 3</string>
     <string name="spin_message">spin_flag</string>
+    <string name="enter_your_email_address">Enter your email address:</string>
+    <string name="type_email_here">Type email here</string>
+    <string name="type_your_password">Type your password:</string>
+    <string name="login">Login</string>
 
 
 </resources>
