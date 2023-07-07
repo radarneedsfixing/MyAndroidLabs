@@ -37,7 +37,8 @@ public class SecondActivity extends AppCompatActivity {
         // TextView
         textView = findViewById(R.id.textView);
         textView.setPadding(0, 32, 0, 0); // Set padding: 32 pixels from the top
-
+        String emailAddress = getIntent().getStringExtra("EMAIL_ADDRESS");
+        textView.setText("Welcome back! "+emailAddress);
         // EditText
         editText = findViewById(R.id.editTextPhone);
         editText.setInputType(android.text.InputType.TYPE_CLASS_PHONE); // Set inputType as Phone

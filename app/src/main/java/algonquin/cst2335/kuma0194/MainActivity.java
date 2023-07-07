@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Create an intent to start the SecondActivity
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            intent.putExtra("EMAIL_ADDRESS", emailAddress);
             startActivity(intent);
         });
 
