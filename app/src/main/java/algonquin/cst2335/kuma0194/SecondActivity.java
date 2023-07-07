@@ -1,11 +1,15 @@
 package algonquin.cst2335.kuma0194;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import android.Manifest;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -70,6 +74,7 @@ public class SecondActivity extends AppCompatActivity {
         // Button - Change picture
         changePictureButton = findViewById(R.id.buttonChangePicture);
         changePictureButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
                 dispatchTakePictureIntent();
@@ -82,10 +87,13 @@ public class SecondActivity extends AppCompatActivity {
         editText.setText(savedPhoneNumber);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+        if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        } else {
+            requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 20);
         }
     }
 
@@ -101,6 +109,16 @@ public class SecondActivity extends AppCompatActivity {
                 // Save the image to disk
                 saveImageToDisk(imageBitmap);
             }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 20 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
 
