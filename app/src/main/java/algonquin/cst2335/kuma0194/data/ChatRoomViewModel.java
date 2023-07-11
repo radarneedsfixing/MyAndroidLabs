@@ -1,14 +1,14 @@
 package algonquin.cst2335.kuma0194.data;
 
 
-import android.view.View;
-
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 
+import algonquin.cst2335.kuma0194.ChatMessage;
+
 public class ChatRoomViewModel extends ViewModel {
 
-    public ArrayList<String> messages = new ArrayList<>();
+    public ArrayList<ChatMessage> messages = new ArrayList<>();
 
 }
