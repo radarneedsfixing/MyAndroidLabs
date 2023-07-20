@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="end">
+
+    <Button
+        android:id="@+id/snackbar_button_yes"
+        android:layout_width="38dp"
+        android:layout_height="34dp"
+        android:layout_margin="8dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="Yes"
+        android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/snackbar_button_no"
+        android:layout_width="33dp"
+        android:layout_height="36dp"
+        android:layout_margin="8dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="No"
+        android:textColor="@color/colorWhite" />
+
+</LinearLayout>
