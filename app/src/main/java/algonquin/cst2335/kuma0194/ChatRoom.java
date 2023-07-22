@@ -202,14 +202,14 @@ public class ChatRoom extends AppCompatActivity {
 
            itemView.setOnClickListener(click -> {
 
-               /*int index = getAbsoluteAdapterPosition();
+               int index = getAbsoluteAdapterPosition();
                ChatMessage selectedMessage = messages.get(index);
                chatModel.selectedMessage.postValue(messages.get(index));
-*/
 
 
 
-                int index = getAbsoluteAdapterPosition(); // Change to int
+
+               /* int index = getAbsoluteAdapterPosition(); // Change to int
                 ChatMessage toDelete = messages.get(index);
 
                 // Backup the message to be deleted
@@ -238,7 +238,7 @@ public class ChatRoom extends AppCompatActivity {
                                     .show();
                         });
 
-                snackbar.show();
+                snackbar.show();*/
 
             });
             message = itemView.findViewById(R.id.theMessage);
