@@ -13,6 +13,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +32,7 @@ import java.util.concurrent.Executors;
 
 import algonquin.cst2335.kuma0194.data.ChatRoomViewModel;
 import algonquin.cst2335.kuma0194.databinding.ActivityChatRoomBinding;
+import algonquin.cst2335.kuma0194.databinding.MessageDetailsLayoutBinding;
 import algonquin.cst2335.kuma0194.databinding.ReceiveRowBinding;
 import algonquin.cst2335.kuma0194.databinding.SentRowBinding;
 
@@ -39,9 +43,12 @@ public class ChatRoom extends AppCompatActivity {
     ActivityChatRoomBinding binding;
     ArrayList<ChatMessage> messages;
     private ChatMessageDAO chatMessageDao;
+    ChatRoomViewModel chatModel;
 
     MessageDatabase myDb;
     RecyclerView.Adapter myAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +57,22 @@ public class ChatRoom extends AppCompatActivity {
         myDb = Room.databaseBuilder(getApplicationContext(), MessageDatabase.class, "database-name").build();
 
          myDAO = myDb.cmDAO();
-        ChatRoomViewModel chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
+         chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
 
+         chatModel.selectedMessage.observe(this, newMessage ->{
+             //new message is what is posted to the value
+
+             MessageDetailsFragment detailsFragment= new MessageDetailsFragment(newMessage);
+
+             FragmentManager fMgr = getSupportFragmentManager();
+
+             FragmentTransaction tx=  fMgr.beginTransaction();
+
+             tx.add(  R.id.fragmentlocation,detailsFragment);
+             tx.commit();
+
+
+         });
         messages= chatModel.messages;
 
         Executor thread = Executors.newSingleThreadExecutor();
@@ -179,7 +200,15 @@ public class ChatRoom extends AppCompatActivity {
         public RowHolder(@NonNull View itemView) {
             super(itemView);
 
-            itemView.setOnClickListener(click -> {
+           itemView.setOnClickListener(click -> {
+
+               /*int index = getAbsoluteAdapterPosition();
+               ChatMessage selectedMessage = messages.get(index);
+               chatModel.selectedMessage.postValue(messages.get(index));
+*/
+
+
+
                 int index = getAbsoluteAdapterPosition(); // Change to int
                 ChatMessage toDelete = messages.get(index);
 
@@ -210,8 +239,8 @@ public class ChatRoom extends AppCompatActivity {
                         });
 
                 snackbar.show();
-            });
 
+            });
             message = itemView.findViewById(R.id.theMessage);
             time = itemView.findViewById(R.id.theTime);
         }
