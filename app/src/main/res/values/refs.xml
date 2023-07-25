@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="ic_garbage_can" />
+    <drawable name="ic_reset" />
+    <drawable name="ic_help" />
+    <drawable name="ic_delete2" />
+</resources>

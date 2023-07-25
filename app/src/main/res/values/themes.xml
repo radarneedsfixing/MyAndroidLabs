@@ -5,6 +5,10 @@
         <item name="colorPrimary">@color/purple</item>
         <item name="colorSecondary">@color/violet</item>
         <item name="android:statusBarColor">@color/orange</item>
+
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.SharwansAndroidLabs" parent="Base.Theme.SharwansAndroidLabs" />
